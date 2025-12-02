@@ -10,9 +10,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mongodb" // Specify that we are using MongoDB as our database.
 }
 
+
+// Define an enum called UserRole. 
+//This enum can have three values: ADMIN, USER, and PREMIUM_USER.
 enum UserRole {
   ADMIN
   USER
