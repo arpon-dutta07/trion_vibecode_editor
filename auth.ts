@@ -92,6 +92,18 @@ callbacks:{
         token.role = existingUser.role;
         return token; // Return the modified token
     },
+
+    async session({session , token}){
+        if(token.sub && session.user){
+            session.user.id = token.sub;
+        }
+
+        if(token.sub && session.user){
+            session.user.role = token.role
+        }
+
+        return session;
+    }
 },
     secret:process.env.AUTH_SECRET, // Secret for signing the JWTs
     adapter:PrismaAdapter(db), // Use PrismaAdapter with the Prisma client instance
