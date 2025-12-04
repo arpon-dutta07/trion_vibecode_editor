@@ -1,12 +1,10 @@
 import { PrismaClient } from "@prisma/client"
-// imported prisma
 
 const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient
+  db: PrismaClient
 }
 
-
-export const prisma = globalForPrisma.prisma || new PrismaClient({
+export const db = globalForPrisma.db || new PrismaClient({
   datasources: {
     db: {
       url: process.env.MONGODB_URI,
@@ -14,8 +12,4 @@ export const prisma = globalForPrisma.prisma || new PrismaClient({
   },
 })
 
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma 
-
-
-// export const prisma = new PrismaClient()
+if (process.env.NODE_ENV !== 'production') globalForPrisma.db = db
