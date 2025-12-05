@@ -1,7 +1,7 @@
 import { UserRole } from "@prisma/client";
 //defines userrole inside prisma schema
 import NextAuth , {type DefaultSession} from "next-auth"
-
+import {JWT} from "next-auth/jwt";
 
 export type ExtendedUser = DefaultSession["user"] & {
     role:UserRole
@@ -13,7 +13,7 @@ declare module "next-auth"{
         user:ExtendedUser
     }
 }
-import {JWT} from "next-auth/jwt";
+
 
 
 declare module "next-auth/jwt"{
