@@ -6,7 +6,7 @@ const SignInPage = () => {
   return (
     <>
       <div className='space-y-6 flex flex-col items-center justify-center'>
-        <Image src={"/login.svg"} alt="Login-Image" height={300} 
+        <Image src={"/login.png"} alt="Login-Image" height={300} 
         width={300}
         className='m-6 object-cover'
         />
