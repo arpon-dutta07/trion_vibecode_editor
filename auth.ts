@@ -93,16 +93,18 @@ callbacks:{
         return token; // Return the modified token
     },
 
+    // This callback is invoked whenever a session is checked.
+    // session object means user data sent to the client
     async session({session , token}){
-        if(token.sub && session.user){
-            session.user.id = token.sub;
+        if(token.sub && session.user){ //token.sub = user ID stored in JWT token
+            session.user.id = token.sub; //This line inserts that user ID into session.user.id
         }
 
         if(token.sub && session.user){
-            session.user.role = token.role
-        }
+            session.user.role = token.role // token.role is a custom field you added earlier in the JWT callback.
+        }//This line sends that role to the frontend inside session.user.
 
-        return session;
+        return session; //Because the session is what your client-side React components read.
     }
 },
     secret:process.env.AUTH_SECRET, // Secret for signing the JWTs
